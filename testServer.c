@@ -49,7 +49,8 @@ int main(){
 		while(1){	
 			n=read(c_socket, rcvBuffer, sizeof(rcvBuffer));
 			printf("Received Data: %s\n",rcvBuffer);
-			printf("Data length: %d\n",sizeof(rcvBuffer));
+			if(strncasecmp(rcvBuffer,"quit",4)==0)
+				break;
 			write(c_socket, rcvBuffer, n); //클라이언트에게 buffer의 내용을 전송함
 		}
 		close(c_socket);
